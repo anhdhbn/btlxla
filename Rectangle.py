@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import cv2
 import os
 
@@ -73,8 +75,10 @@ class Rectangle(object):
             temp = [piece_full for piece_full in pieces_full if piece_full.compare_in(piece)]
             piece.append(temp)
 
-        for piece in pieces:
-            piece.write_img(f"{self.folder}/{piece.arr[0].numver}-{piece.arr[0].numhor}.png")
+        return pieces
+
+        # for piece in pieces:
+        #     piece.write_img(f"{self.folder}/{piece.arr[0].numver}-{piece.arr[0].numhor}.png")
 
 
 
@@ -102,4 +106,7 @@ class PieceFull(Piece):
         self.arr = []
     def append(self, pieces_full):
         self.arr += pieces_full
+    
+    def get_positon(self):
+        return self.arr[0].numver, self.arr[0].numhor
 
